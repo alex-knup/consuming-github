@@ -1,8 +1,5 @@
 package com.alex.consuming_github.infra.service;
-import com.alex.consuming_github.domain.dto.UserDTO;
-import com.alex.consuming_github.domain.dto.UserDetailsDTO;
-import com.alex.consuming_github.domain.dto.UserRepositoriesDTO;
-import com.alex.consuming_github.domain.dto.UsersListDTO;
+import com.alex.consuming_github.domain.dto.*;
 import com.alex.consuming_github.infra.client.PublicApiGitHubClient;
 import com.alex.consuming_github.infra.util.Utils;
 import org.springframework.stereotype.Service;
@@ -33,7 +30,8 @@ public class GitHubService {
         return client.getUserDetails(username);
     }
 
-    public List<UserRepositoriesDTO> getUsersRespos(String username) {
-        return client.getUsersRepos(username);
+    public UserReposSummaryDTO getUsersRespos(String username) {
+        List<UserRepositoriesDTO> userRepositoriesDTOS = client.getUsersRepos(username);
+        return new UserReposSummaryDTO(username, userRepositoriesDTOS);
     }
 }

@@ -1,8 +1,5 @@
 package com.alex.consuming_github.controller;
-import com.alex.consuming_github.domain.dto.UserDTO;
-import com.alex.consuming_github.domain.dto.UserDetailsDTO;
-import com.alex.consuming_github.domain.dto.UserRepositoriesDTO;
-import com.alex.consuming_github.domain.dto.UsersListDTO;
+import com.alex.consuming_github.domain.dto.*;
 import com.alex.consuming_github.infra.service.GitHubService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +29,7 @@ class GitHubController {
     }
 
     @GetMapping("/users/{username}/repositories")
-    public ResponseEntity<List<UserRepositoriesDTO>> getUserRepositories(@PathVariable String username) {
-        var userRepos = service.getUsersRespos(username);
-        return ResponseEntity.ok(userRepos);
+    public ResponseEntity<UserReposSummaryDTO> getUserRepositories(@PathVariable String username) {
+        return ResponseEntity.ok(service.getUsersRespos(username));
     }
 }
