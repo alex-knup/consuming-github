@@ -1,0 +1,3 @@
+# Ideia para implementar na api consuming-github
+
+ao receber a listagem de usuários da api github faremos, de forma assíncrona, a gravação dos dados em um arquivo de forma não bloqueante.
