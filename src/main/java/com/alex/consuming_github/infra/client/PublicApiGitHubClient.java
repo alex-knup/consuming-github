@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @FeignClient(name = "github", url = "https://api.github.com")
-public interface GitHubClient {
+public interface PublicApiGitHubClient {
 
     @GetMapping("/users")
     List<UserDTO> getUsers(@RequestParam("since") int since);

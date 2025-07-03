@@ -2,12 +2,12 @@ package com.alex.consuming_github.domain.dto;
 
 import java.util.List;
 
-public class UserListDTO {
+public class UsersListDTO {
 
     private List<UserDTO> users;
     private String next;
 
-    public UserListDTO() {
+    public UsersListDTO() {
     }
 
     public List<UserDTO> getUsers() {
