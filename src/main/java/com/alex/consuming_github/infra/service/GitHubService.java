@@ -1,5 +1,6 @@
 package com.alex.consuming_github.infra.service;
 import com.alex.consuming_github.domain.dto.UserDTO;
+import com.alex.consuming_github.domain.dto.UserDetailsDTO;
 import com.alex.consuming_github.domain.dto.UsersListDTO;
 import com.alex.consuming_github.infra.client.PublicApiGitHubClient;
 import com.alex.consuming_github.infra.util.Utils;
@@ -25,5 +26,9 @@ public class GitHubService {
             usersListDto.setNext(url);
         }
         return usersListDto;
+    }
+
+    public UserDetailsDTO getUserDetails(String username) {
+        return client.getUserDetails(username);
     }
 }
