@@ -1,11 +1,13 @@
 package com.alex.consuming_github.controller;
+import com.alex.consuming_github.domain.dto.UserDTO;
+import com.alex.consuming_github.domain.dto.UserDetailsDTO;
 import com.alex.consuming_github.domain.dto.UsersListDTO;
 import com.alex.consuming_github.infra.service.GitHubService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/github/api/v1")
+@RequestMapping(value = "/github/api/v2")
 class GitHubController {
 
     private final GitHubService service;
@@ -18,5 +20,11 @@ class GitHubController {
     public ResponseEntity<UsersListDTO> getUsers(@RequestParam(value = "since", defaultValue = "0") int since) {
         var usersListDto = service.getUsers(since);
         return ResponseEntity.ok(usersListDto);
+    }
+
+    @GetMapping("/users/{username}/details")
+    public ResponseEntity<UserDetailsDTO> getUserDetails(@PathVariable String username) {
+        var user = service.getUserDetails(username);
+        return ResponseEntity.ok(user);
     }
 }
