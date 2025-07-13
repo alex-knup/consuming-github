@@ -9,14 +9,14 @@ import java.util.List;
         "total_repositories",
         "repositories"
 })
-public class UserReposSummaryDTO {
+public class UserRepositorySummaryDTO {
 
     private String login;
     @JsonProperty("total_repositories")
     private int totalRepositories;
     private List<UserRepositoriesDTO> repositories;
 
-    public UserReposSummaryDTO(String login, List<UserRepositoriesDTO> repositories) {
+    public UserRepositorySummaryDTO(String login, List<UserRepositoriesDTO> repositories) {
         this.login = login;
         this.totalRepositories = repositories.size();
         this.repositories = repositories;

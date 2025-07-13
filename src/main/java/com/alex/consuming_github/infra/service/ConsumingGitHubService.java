@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GitHubService {
+public class ConsumingGitHubService {
 
     private final PublicApiGitHubClient client;
 
-    public GitHubService(PublicApiGitHubClient client) {
+    public ConsumingGitHubService(PublicApiGitHubClient client) {
         this.client = client;
     }
 
@@ -30,8 +30,8 @@ public class GitHubService {
         return client.getUserDetails(username);
     }
 
-    public UserReposSummaryDTO getUsersRespos(String username) {
+    public UserRepositorySummaryDTO getUsersRespositories(String username) {
         List<UserRepositoriesDTO> userRepositoriesDTOS = client.getUsersRepos(username);
-        return new UserReposSummaryDTO(username, userRepositoriesDTOS);
+        return new UserRepositorySummaryDTO(username, userRepositoriesDTOS);
     }
 }

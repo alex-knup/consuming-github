@@ -1,18 +1,16 @@
 package com.alex.consuming_github.controller;
 import com.alex.consuming_github.domain.dto.*;
-import com.alex.consuming_github.infra.service.GitHubService;
+import com.alex.consuming_github.infra.service.ConsumingGitHubService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(value = "/github/api/v2")
-class GitHubController {
+class ConsumingGitHubController {
 
-    private final GitHubService service;
+    private final ConsumingGitHubService service;
 
-    public GitHubController(GitHubService service) {
+    public ConsumingGitHubController(ConsumingGitHubService service) {
         this.service = service;
     }
 
@@ -29,7 +27,7 @@ class GitHubController {
     }
 
     @GetMapping("/users/{username}/repositories")
-    public ResponseEntity<UserReposSummaryDTO> getUserRepositories(@PathVariable String username) {
-        return ResponseEntity.ok(service.getUsersRespos(username));
+    public ResponseEntity<UserRepositorySummaryDTO> getUserRepositories(@PathVariable String username) {
+        return ResponseEntity.ok(service.getUsersRespositories(username));
     }
 }
